@@ -22,5 +22,9 @@ try{
  const html=await readFile(join(scratch,'dist/index.html'),'utf8');
  if(!html.includes('Sample Repair Co.')||html.includes('href="#services"')||!html.includes('tel:+16055550123'))throw Error('Customized output did not match setup');
  await run(['exec','--','wrangler','deploy','--dry-run','--env','']);
- console.log('PASS: clean install, setup, optional sections, contact details, verification and Cloudflare dry run. No deployment occurred. Browser/account/human usability checks are separate.');
+ site.example=false;site.contactMode='email';site.email='owner@sample-repair.test';site.siteUrl='https://sample-repair.test';await writeFile(path,JSON.stringify(site,null,2)+'\n');
+ const build=spawn(process.execPath,['scripts/build.mjs','--production'],{cwd:scratch,stdio:'inherit'});await new Promise((resolveBuild,reject)=>{build.once('error',reject);build.once('exit',code=>code===0?resolveBuild():reject(Error('Production rehearsal failed')));});
+ if(!(await readFile(join(scratch,'dist/sitemap.xml'),'utf8')).includes('<loc>https://sample-repair.test</loc>'))throw Error('Production sitemap has the wrong origin');
+ const {access}=await import('node:fs/promises');let onboardingPresent=true;try{await access(join(scratch,'dist/start'));}catch{onboardingPresent=false;}if(onboardingPresent)throw Error('Onboarding leaked into production output');
+ console.log('PASS: clean install, setup, optional sections, contact details, verification Cloudflare dry run and production onboarding exclusion. No deployment occurred. Browser/account/human usability checks are separate.');
 }finally{await rm(scratch,{recursive:true,force:true});}

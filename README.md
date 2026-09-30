@@ -6,6 +6,12 @@ A working website starter from [Xovion Labs](https://xovionlabs.com), packaged w
 
 ## Start here
 
+Open `/start/` on a local or deployed preview for the browser questionnaire. It creates a business brief and first Codex prompt without submitting or storing answers. The onboarding page is included in preview builds and excluded from production business sites.
+
+[Set up a public Cloudflare preview](https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2FMetaCode2023%2Fxovion-custom-website) · [Guided launch](docs/GUIDED-LAUNCH.md)
+
+The Cloudflare button opens account/repository setup and can publish the fictional sample in your account. Its account-backed deployment still needs a fresh-account acceptance check. Fork/ZIP copying works now; enabling GitHub’s Template repository setting is an owner action.
+
 1. Make your own copy of this repo: fork it, or download the ZIP and extract it. Keep your business copy in your own repository.
 2. Open that folder in a local Codex app, editor or CLI. A browser-only chat cannot run the project without a connected development environment.
 3. Run `npm run setup` after installing dependencies for a guided questionnaire, or fill in [BUSINESS-BRIEF.md](BUSINESS-BRIEF.md), or paste your business details into Codex.

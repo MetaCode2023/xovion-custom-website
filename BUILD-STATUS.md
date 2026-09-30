@@ -1,21 +1,25 @@
 # Build status
 
-Version 0.1: working static homepage and demo dialog; editable content; Cloudflare Worker; preview/production configuration; launch gates; documentation and local tests.
+Version 0.1: working editable homepage, demo inquiry dialog, guided setup, optional sections, public business details and Cloudflare Worker Static Assets. Preview and production use separate commands; production requires approved content and a real contact destination.
 
-Added guided setup (`npm run setup`) with validation, confirmation and local backups; automatic source rebuilding and Wrangler live reload (`npm run dev`). Ten automated tests pass, covering cancellation, backups, file additions/deletions, failed-build recovery and local-only CSP allowances.
+## Plug-and-play onboarding
 
-Local Wrangler startup in the build environment failed with `uv_interface_addresses`; browser reload and visual behavior still require a normal local-machine check. No claim of browser verification is made.
+- `/start/` provides a browser questionnaire, personalized business brief and first Codex prompt.
+- Users can copy the complete kit or download two Markdown files. Answers stay in page memory; there is no server submission or storage.
+- Packaged guides and a Cloudflare preview setup button explain the account, repository, build and domain steps.
+- `npm run deploy` explicitly targets preview. Production builds exclude onboarding and packaged guides.
+- Reusable UI/UX prompts guide improvements without forcing a fixed design preset.
 
-No hosted website or Cloudflare account resources are provisioned. No custom CRM, database, server intake or live integrations are implemented. Browser visual checks remain a release review item.
+## Verification
+
+23 unit tests cover configuration, escaping, setup/backups, questionnaire validation, private-information scanning, watcher recovery and Worker behavior. GitHub Actions runs these checks plus Chromium desktop/phone browser checks on the actual Wrangler Worker.
+
+The clean-copy rehearsal installs dependencies, customizes a fictional business, verifies output, performs a Cloudflare dry run and builds production. It checks the sitemap and onboarding exclusion. This exposed a production sitemap variable error, now fixed. No actual deployment occurs during rehearsal.
+
+Local Wrangler startup is blocked in this build environment by `uv_interface_addresses`; actual Worker browser checks run in GitHub Actions. Human usability review, Safari checks and account-backed Cloudflare deployment remain separate acceptance steps.
+
+## Remaining launch work
+
+No hosted website or Cloudflare account resources are provisioned. GitHub's template-repository setting requires an owner action; ZIP/fork paths are documented. No custom database, CRM, server intake or live integrations are implemented. A Cloudflare setup button does not prove an owner completed deployment.
 
 Next prompt: Read START-HERE.md and BUSINESS-BRIEF.md. Customize this repo for my business, run checks and give me a local preview before deploying.
-
-Added npm run doctor and validated, escaped homepage copy fields. New-business setup uses neutral section copy and retains previously customized copy on subsequent runs. Fifteen automated tests pass. Doctor reproduces the network-interface blocker in this environment; local server/browser review remains unverified.
-
-Added seven reusable UI/UX request prompts and a Chromium browser suite for desktop/phone viewports using the actual Wrangler preview Worker. GitHub Actions installs browsers and runs the suite. Local Wrangler startup remains blocked by network-interface lookup; rely on the recorded CI result for automated browser evidence, and retain owner visual review and Safari checks before launch.
-
-First browser CI exposed an asset-response cloning bug: body/status were not preserved by the Worker. Fixed by forwarding the asset body and response init; added a regression test for HTML body, content type and 404 status. Rerun browser CI for verification.
-
-Added section toggles, optional public business details, four fictional business-brief examples, private-information scanning and a first-time-user acceptance worksheet/automated clean-copy rehearsal. Unit tests now use a stable fictional fixture rather than owner-edited configuration. Git scanning checks staged versions to avoid missing a secret cleaned only in the working tree. Human first-time-user review remains unperformed.
-
-Verification: clean-copy rehearsal passed installation, setup, customized output, unit checks and Cloudflare dry run. Current suite contains 21 unit tests. The rehearsal exposed configuration-dependent test assumptions; stable fixtures fixed them. Browser CI checks run separately on the actual Worker.

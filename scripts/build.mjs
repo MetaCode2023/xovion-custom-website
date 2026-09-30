@@ -59,8 +59,14 @@ export async function build(production=false){
  const template=await readFile(new URL('../src/index.html',import.meta.url),'utf8');
  const html=renderSite(s,template,production);
  await rm('dist',{recursive:true,force:true});await mkdir('dist');await cp('public','dist',{recursive:true});await writeFile('dist/index.html',html);await cp('src/client.js','dist/client.js');
- await writeFile('dist/robots.txt',production?`User-agent: *\nAllow: /\nSitemap: ${s.siteUrl.replace(/\/$/,'')}/sitemap.xml\n`:'User-agent: *\nDisallow: /\n');
- if(production)await writeFile('dist/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${e(s.siteUrl)}</loc></url></urlset>`);
+ if(production)await rm('dist/start',{recursive:true,force:true});
+ else{
+  await mkdir('dist/start/guides',{recursive:true});
+  for(const name of ['START-HERE.md','CLOUDFLARE-SETUP.md','LAUNCH-CHECKLIST.md'])await cp(name,`dist/start/guides/${name}`);
+  for(const name of ['UI-UX-PROMPTS.md','GUIDED-LAUNCH.md'])await cp(`docs/${name}`,`dist/start/guides/${name}`);
+ }
+ await writeFile('dist/robots.txt' ,production?`User-agent: *\nAllow: /\nSitemap: ${s.siteUrl.replace(/\/$/,'')}/sitemap.xml\n`:'User-agent: *\nDisallow: /\n');
+ if(production)await writeFile('dist/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${escapeHTML(s.siteUrl)}</loc></url></urlset>`);
  console.log(`Built ${production?'production':'preview'} → dist/`);
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href) await build(process.argv.includes('--production'));

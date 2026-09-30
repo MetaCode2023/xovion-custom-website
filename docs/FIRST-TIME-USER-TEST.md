@@ -4,7 +4,7 @@ Use a fresh copy of this repository. This exercise tests whether the instruction
 
 ## Automated rehearsal
 
-Run `npm run test:first-run` from the starter folder. It makes a temporary clean copy, installs from the lockfile, runs the setup logic with fictional answers, hides optional sections, adds fictional public details, verifies output and runs a Cloudflare deployment dry run. It removes the temporary copy afterward and leaves your project unchanged.
+Run `npm run test:first-run` from the starter folder. It makes a temporary clean copy, installs from the lockfile, runs the setup logic with fictional answers, hides optional sections, adds fictional public details, verifies output and runs a Cloudflare deployment dry run. It also builds a fictional production configuration and confirms that the onboarding page is excluded. It removes the temporary copy afterward and leaves your project unchanged.
 
 This proves a repeatable technical path, not that a person found the instructions easy. It does not sign into Codex/Cloudflare, start Wrangler's browser server, exercise the interactive terminal itself or publish a website. Browser checks run separately with `npm run test:browser`.
 

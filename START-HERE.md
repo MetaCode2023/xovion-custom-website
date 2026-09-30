@@ -4,6 +4,10 @@ Use a computer for the build. Read README.md first. Make your own copy of the re
 
 For examples of a useful brief, see examples/business-briefs/README.md. For a complete rehearsal and feedback worksheet, see docs/FIRST-TIME-USER-TEST.md.
 
+## Browser questionnaire
+
+On a local/deployed preview, open `/start/`. Fill in public business facts and create your brief. Replace BUSINESS-BRIEF.md with the downloaded file and paste the downloaded first prompt into Codex. You can also copy everything from your phone; on your computer, give the combined text to Codex in the starter folder. Answers stay in page memory and are cleared on reload. This does not modify your repo or deploy.
+
 ## Guided setup
 
 Run `npm ci`, then `npm run setup` in the project folder. Answer the questions and type `yes` to save. Existing content and the brief are backed up locally. Keep demo contact mode while reviewing. Run `npm run dev`; edits rebuild and reload the preview automatically. Then give Codex the prompt below to refine the design and copy.

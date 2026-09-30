@@ -2,6 +2,8 @@
 
 The website runs on a Cloudflare Worker with Static Assets. GitHub stores the code. The included configuration has a preview Worker and a separate production Worker. No database, email provider or live form is required for the default starter.
 
+For the account-guided public preview path and copy-paste production prompt, see [GUIDED-LAUNCH.md](docs/GUIDED-LAUNCH.md). The default `npm run deploy` command intentionally publishes preview settings; production remains a separate command.
+
 ## 1. Prepare your accounts and copy
 
 Use your own GitHub repository and Cloudflare account. Install from the lockfile with npm ci. Give preview/production Workers unique names in wrangler.jsonc; generic names could collide with other projects in your account. Confirm the correct Cloudflare account before deployment. Review current Cloudflare plans and limits.
