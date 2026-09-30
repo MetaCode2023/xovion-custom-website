@@ -9,3 +9,5 @@ Local Wrangler startup in the build environment failed with `uv_interface_addres
 No hosted website or Cloudflare account resources are provisioned. No custom CRM, database, server intake or live integrations are implemented. Browser visual checks remain a release review item.
 
 Next prompt: Read START-HERE.md and BUSINESS-BRIEF.md. Customize this repo for my business, run checks and give me a local preview before deploying.
+
+Added npm run doctor and validated, escaped homepage copy fields. New-business setup uses neutral section copy and retains previously customized copy on subsequent runs. Fifteen automated tests pass. Doctor reproduces the network-interface blocker in this environment; local server/browser review remains unverified.

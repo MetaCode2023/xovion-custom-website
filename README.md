@@ -17,7 +17,8 @@ A working website starter from [Xovion Labs](https://xovionlabs.com), packaged w
 - Responsive homepage with services, process, FAQs and an interactive demo form.
 - Guided setup with a business brief, content validation and local backups.
 - Automatic local rebuilding and browser reload when you edit source files.
-- Editable business content in `src/site.json`.
+- Editable business content, navigation, button labels, process steps and FAQs in `src/site.json`.
+- Read-only environment troubleshooting with `npm run doctor`.
 - Cloudflare Worker and Static Assets configuration.
 - Production checks that reject fictional content, demo contact mode and missing domain settings.
 - Codex project instructions, business worksheet, launch and maintenance prompts.
@@ -39,12 +40,14 @@ Open the local address Wrangler prints. This development server stays on your co
 
 The setup command asks for business facts and a contact method, then asks before saving. It updates `src/site.json` and `BUSINESS-BRIEF.md`, with ignored local backups of both. Review the generated brief and service descriptions before launch. Skip setup to explore the fictional demo.
 
+If setup or preview fails, run `npm run doctor`. It checks Node, the lockfile, installed Wrangler, source files, content and local network-interface support, then prints specific fixes. Production warnings are expected for the fictional demo. It does not check Cloudflare login, contact delivery or browser behavior.
+
 ## Customize
 
 | File | Purpose |
 |---|---|
 | `BUSINESS-BRIEF.md` | Your business facts and design goals |
-| `src/site.json` | Business name, copy, services, contact mode and website origin |
+| `src/site.json` | Business facts, `copy` section text, services, contact mode and website origin |
 | `src/index.html` | Homepage structure |
 | `public/style.css` | Colors, typography and layout |
 | `src/client.js` | Demo dialog/form interaction |
@@ -60,3 +63,5 @@ This is a starter, not an automatic guarantee of a launch-ready business site. Y
 Start with a working homepage. Add booking, CRM, payments or voice only after documenting who owns each record and how failures are handled. See [docs/OPTIONAL-INTEGRATIONS.md](docs/OPTIONAL-INTEGRATIONS.md).
 
 MIT licensed. See [LICENSE](LICENSE). Contributions: [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Content field examples: [docs/EDITING-CONTENT.md](docs/EDITING-CONTENT.md). Troubleshooting: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md).

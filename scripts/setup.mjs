@@ -10,6 +10,7 @@ export function makeSetup(current, answers) {
  const services=answers.services.split(',').map(x=>x.trim()).filter(Boolean);
  if(!services.length)throw Error('Enter at least one service.');
  config.services=services.map(name=>current.services.find(x=>x.name===name)||{name,description:'Ask us about the scope and availability for this service.'});
+ if(current.example)config.copy={...current.copy,cta:'Get in touch',serviceCta:'Ask about this service',heroSteps:['Share your needs','Discuss the details','Choose your next step'],servicesEyebrow:'What we offer',servicesHeading:'Explore our services.',processHeading:'Start with a conversation.',processSteps:[{title:'Tell us what you need.',description:'Share your priorities and questions.'},{title:'Discuss the details.',description:'Confirm scope, pricing and availability with the business.'},{title:'Agree on the next step.',description:'A request does not confirm a booking or purchase.'}],contactHeading:'How can we help?'};
  validateSite(config);
  const brief=`# My business brief\n\nBusiness name: ${config.name}\nLocation/service area: ${config.location}\nHeadline: ${config.headline}\nWhat we do: ${config.description}\nServices: ${services.join(', ')}\nContact method: ${config.contactMode}\nDesign direction: ${answers.style.trim()||'Use the starter as a starting point.'}\n\nFacts to confirm: service inclusions/exclusions, approved images, pricing, reviews and domain. Do not invent missing claims. New service descriptions are neutral starting points to review with the owner. Demo mode sends and saves nothing.\n`;
  return {config,brief};
@@ -21,8 +22,8 @@ export async function runSetup(ask, root=process.cwd()) {
  const answers={};
  answers.name=await text('Business name',current.example?'':current.name);
  answers.location=await text('Location or service area',current.example?'':current.location);
- answers.tagline=await text('Short tagline',current.tagline);
- answers.headline=await text('Homepage headline',current.headline);
+ answers.tagline=await text('Short tagline',current.example?'Service built around your needs.':current.tagline);
+ answers.headline=await text('Homepage headline',current.example?'Let’s find the right solution.':current.headline);
  answers.description=await text('What does your business do?',current.example?'':current.description);
  answers.services=await text('Service names, separated by commas',current.example?'':current.services.map(x=>x.name).join(', '));
  answers.style=await text('How should the website feel?','Warm, clear and welcoming');

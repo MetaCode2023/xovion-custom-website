@@ -30,4 +30,4 @@ Read CLOUDFLARE-SETUP.md and LAUNCH-CHECKLIST.md. Prepare this project for my ow
 Continue from BUILD-STATUS.md in this project. Make this change: [describe it]. Update source files, run the relevant checks and show me the result before publishing. Keep current working contact links and account wiring. Record changes and any remaining steps.
 ```
 
-If stuck: paste the error and say “Diagnose this in the existing project. Fix everything you can, then give me the single next action you need from me.”
+If stuck: run `npm run doctor`, then paste its output and the error and say “Diagnose this in the existing project. Fix everything you can, then give me the single next action you need from me.”

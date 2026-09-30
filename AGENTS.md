@@ -15,3 +15,5 @@ No secrets in Git, browser assets, prompts or logs. Production must reject ficti
 Use the existing booking/CRM system as operational authority by default. Custom backend collection requires server validation, abuse controls, durable receipt, authenticated owner access, retry/idempotency design, privacy/retention decisions and tests. D1, Queues, R2, voice and payments are optional, not prerequisites for a simple site.
 
 Use npm run setup for guided business onboarding when helpful. Setup backups are ignored local files; preserve them. npm run dev watches src/ and public/ and enables reload only for loopback preview requests. Never carry the local CSP exception into public or production responses. Restart development after changing scripts or Wrangler configuration.
+
+Homepage business copy, including navigation, CTA labels, process steps and FAQs, belongs in src/site.json.copy. Keep demo safety notices accurate. Run npm run doctor to diagnose setup errors; it is read-only and does not prove Cloudflare authentication or server startup. See docs/EDITING-CONTENT.md and docs/TROUBLESHOOTING.md.
