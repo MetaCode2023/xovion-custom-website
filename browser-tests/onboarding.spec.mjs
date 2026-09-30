@@ -10,7 +10,7 @@ test('onboarding generates downloadable kit without submitting business details'
  await page.locator('[name=name]').fill('Updated name');await expect(page.locator('#output')).toBeHidden();await page.getByRole('button',{name:'Clear answers'}).click();await expect(page.locator('[name=name]')).toHaveValue('');expect(writes).toEqual([]);
 });
 test('onboarding refuses unsafe contact links and fits narrow screens',async({page})=>{
- await page.goto('/start/');await fill(page);await page.locator('#optional-details summary').click();await page.locator('[name=contactMode]').selectOption('booking');await page.locator('[name=bookingUrl]').fill('http://example.com/request');await page.getByRole('button',{name:'Create my brief and prompt'}).click();await expect(page.getByRole('status')).toContainText('HTTPS');await expect(page.locator('#output')).toBeHidden();
+ await page.goto('/start/');await fill(page);await page.locator('#optional-details summary').click();await page.locator('[name=contactMode]').selectOption('booking');await page.locator('[name=bookingUrl]').fill('http://example.com/request');await page.getByRole('button',{name:'Create my brief and prompt'}).click();await expect(page.getByRole('alert')).toContainText('HTTPS');await expect(page.locator('#output')).toBeHidden();
  await page.setViewportSize({width:360,height:900});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=document.documentElement.clientWidth+1)).toBe(true);
  const guide=await page.request.get('/start/guides/GUIDED-LAUNCH.md');expect(guide.status()).toBe(200);expect(await guide.text()).toContain('Production launch prompt');
 });
