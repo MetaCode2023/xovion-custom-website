@@ -13,3 +13,5 @@ Keep public pages responsive and keyboard accessible with visible labels/focus, 
 No secrets in Git, browser assets, prompts or logs. Production must reject fictional content and demo mode. Account creation, paid resources, public deployment and DNS require owner authorization unless explicitly authorized in the session. Respect existing email/DNS and document rollback. Never remove authorization requirements to force a launch.
 
 Use the existing booking/CRM system as operational authority by default. Custom backend collection requires server validation, abuse controls, durable receipt, authenticated owner access, retry/idempotency design, privacy/retention decisions and tests. D1, Queues, R2, voice and payments are optional, not prerequisites for a simple site.
+
+Use npm run setup for guided business onboarding when helpful. Setup backups are ignored local files; preserve them. npm run dev watches src/ and public/ and enables reload only for loopback preview requests. Never carry the local CSP exception into public or production responses. Restart development after changing scripts or Wrangler configuration.

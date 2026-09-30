@@ -8,13 +8,15 @@ A working website starter from [Xovion Labs](https://xovionlabs.com), packaged w
 
 1. Make your own copy of this repo: fork it, or download the ZIP and extract it. Keep your business copy in your own repository.
 2. Open that folder in a local Codex app, editor or CLI. A browser-only chat cannot run the project without a connected development environment.
-3. Fill in [BUSINESS-BRIEF.md](BUSINESS-BRIEF.md), or paste your business details into Codex.
+3. Run `npm run setup` after installing dependencies for a guided questionnaire, or fill in [BUSINESS-BRIEF.md](BUSINESS-BRIEF.md), or paste your business details into Codex.
 4. Paste the first prompt in [START-HERE.md](START-HERE.md).
 5. Review the preview. Use [CLOUDFLARE-SETUP.md](CLOUDFLARE-SETUP.md) when you are ready to launch.
 
 ## What is included
 
 - Responsive homepage with services, process, FAQs and an interactive demo form.
+- Guided setup with a business brief, content validation and local backups.
+- Automatic local rebuilding and browser reload when you edit source files.
 - Editable business content in `src/site.json`.
 - Cloudflare Worker and Static Assets configuration.
 - Production checks that reject fictional content, demo contact mode and missing domain settings.
@@ -29,10 +31,13 @@ Install Node.js 22 or newer (a supported LTS is recommended), then:
 
 ```sh
 npm ci
+npm run setup
 npm run dev
 ```
 
-Open the local address Wrangler prints. This development server stays on your computer. After editing source files, restart `npm run dev` to rebuild HTML and styles. `npm run verify` runs checks, tests and a preview build.
+Open the local address Wrangler prints. This development server stays on your computer. Edits in `src/` and `public/` rebuild automatically and reload the preview. Invalid content prints an error; fix it and the watcher retries. Restart the server after changing build scripts or Wrangler configuration. `npm run verify` runs checks, tests and a preview build.
+
+The setup command asks for business facts and a contact method, then asks before saving. It updates `src/site.json` and `BUSINESS-BRIEF.md`, with ignored local backups of both. Review the generated brief and service descriptions before launch. Skip setup to explore the fictional demo.
 
 ## Customize
 

@@ -8,7 +8,8 @@ export default {
     const response = new Response(await env.ASSETS.fetch(request));
     response.headers.set('X-Content-Type-Options', 'nosniff');
     response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-    response.headers.set('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'none'");
+    const localReload = env.LOCAL_DEV === "true" && env.SITE_STAGE !== "production" && ["localhost", "127.0.0.1", "[::1]"].includes(url.hostname);
+    response.headers.set('Content-Security-Policy', `default-src 'self'; script-src 'self'${localReload ? " 'unsafe-inline'" : ""}; style-src 'self'; img-src 'self' data:; connect-src 'self'${localReload ? " ws://localhost:* ws://127.0.0.1:*" : ""}; form-action 'none'; frame-ancestors 'none'; base-uri 'none'`);
     if (env.SITE_STAGE !== 'production') response.headers.set('X-Robots-Tag','noindex, nofollow');
     return response;
   }

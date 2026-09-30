@@ -2,6 +2,10 @@
 
 Version 0.1: working static homepage and demo dialog; editable content; Cloudflare Worker; preview/production configuration; launch gates; documentation and local tests.
 
+Added guided setup (`npm run setup`) with validation, confirmation and local backups; automatic source rebuilding and Wrangler live reload (`npm run dev`). Ten automated tests pass, covering cancellation, backups, file additions/deletions, failed-build recovery and local-only CSP allowances.
+
+Local Wrangler startup in the build environment failed with `uv_interface_addresses`; browser reload and visual behavior still require a normal local-machine check. No claim of browser verification is made.
+
 No hosted website or Cloudflare account resources are provisioned. No custom CRM, database, server intake or live integrations are implemented. Browser visual checks remain a release review item.
 
 Next prompt: Read START-HERE.md and BUSINESS-BRIEF.md. Customize this repo for my business, run checks and give me a local preview before deploying.
