@@ -9,3 +9,6 @@ dist/
 
 *.setup-backup-*
 *.setup-tmp
+
+test-results/
+playwright-report/

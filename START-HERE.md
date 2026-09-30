@@ -18,6 +18,10 @@ If your business brief is empty, paste the name, location, services, contact met
 
 Open the local preview address. Check it on a narrow window, navigate the services, open FAQs and try the demo using fictional details. Nothing should be submitted. Tell Codex specific changes and provide a screenshot when useful. Continue in the same folder.
 
+## Improve UI and UX
+
+Choose a prompt in docs/UI-UX-PROMPTS.md after reviewing the first preview. Explain what feels awkward, who uses the site and what they need to do. Ask for concrete changes and browser evidence. These prompts guide improvements without choosing a fixed visual style for you.
+
 ## Launch prompt
 
 ```text

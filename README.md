@@ -22,7 +22,8 @@ A working website starter from [Xovion Labs](https://xovionlabs.com), packaged w
 - Cloudflare Worker and Static Assets configuration.
 - Production checks that reject fictional content, demo contact mode and missing domain settings.
 - Codex project instructions, business worksheet, launch and maintenance prompts.
-- Tests and GitHub Actions checks; deployment is manual until you choose automation.
+- Unit tests and Chromium browser checks in GitHub Actions; deployment is manual until you choose automation.
+- Copy-paste UI/UX improvement prompts that preserve your own visual identity.
 
 The sample business **Good Neighbor** is fictional. No client data, photography or paid assets are included. The demo form sends and saves nothing. Live contact options are an email link or your existing HTTPS scheduling/request link; custom forms and integrations are optional later work.
 
@@ -65,3 +66,16 @@ Start with a working homepage. Add booking, CRM, payments or voice only after do
 MIT licensed. See [LICENSE](LICENSE). Contributions: [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Content field examples: [docs/EDITING-CONTENT.md](docs/EDITING-CONTENT.md). Troubleshooting: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md).
+
+## Improve the experience
+
+Use [docs/UI-UX-PROMPTS.md](docs/UI-UX-PROMPTS.md) to ask Codex for clearer content, visual polish, better mobile usability, simpler contact journeys or an accessibility review. Choose an outcome and add your audience and constraints.
+
+To run browser checks locally:
+
+```sh
+npx playwright install chromium
+npm run test:browser
+```
+
+Browser checks start the actual local Wrangler Worker on port 8791 and cover navigation, FAQs, demo validation/reset, keyboard access, overflow and Worker responses. Live email/booking modes check configured links without contacting the provider. Chromium runs at desktop and phone viewport sizes; this is not Safari/iPhone hardware verification or a complete accessibility audit. GitHub Actions installs required Linux browser dependencies. On Linux, use `npx playwright install --with-deps chromium` if system libraries are missing. Keep `npm run verify` for the lightweight checks; browser checks run separately and are required in CI.

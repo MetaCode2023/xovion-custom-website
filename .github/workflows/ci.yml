@@ -16,3 +16,5 @@ jobs:
       - run: npm ci
       - run: npm run verify
       - run: npx wrangler deploy --dry-run --env ""
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser

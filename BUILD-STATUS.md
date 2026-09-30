@@ -11,3 +11,5 @@ No hosted website or Cloudflare account resources are provisioned. No custom CRM
 Next prompt: Read START-HERE.md and BUSINESS-BRIEF.md. Customize this repo for my business, run checks and give me a local preview before deploying.
 
 Added npm run doctor and validated, escaped homepage copy fields. New-business setup uses neutral section copy and retains previously customized copy on subsequent runs. Fifteen automated tests pass. Doctor reproduces the network-interface blocker in this environment; local server/browser review remains unverified.
+
+Added seven reusable UI/UX request prompts and a Chromium browser suite for desktop/phone viewports using the actual Wrangler preview Worker. GitHub Actions installs browsers and runs the suite. Local Wrangler startup remains blocked by network-interface lookup; rely on the recorded CI result for automated browser evidence, and retain owner visual review and Safari checks before launch.
