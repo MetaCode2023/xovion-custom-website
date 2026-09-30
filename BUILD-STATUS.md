@@ -13,3 +13,5 @@ Next prompt: Read START-HERE.md and BUSINESS-BRIEF.md. Customize this repo for m
 Added npm run doctor and validated, escaped homepage copy fields. New-business setup uses neutral section copy and retains previously customized copy on subsequent runs. Fifteen automated tests pass. Doctor reproduces the network-interface blocker in this environment; local server/browser review remains unverified.
 
 Added seven reusable UI/UX request prompts and a Chromium browser suite for desktop/phone viewports using the actual Wrangler preview Worker. GitHub Actions installs browsers and runs the suite. Local Wrangler startup remains blocked by network-interface lookup; rely on the recorded CI result for automated browser evidence, and retain owner visual review and Safari checks before launch.
+
+First browser CI exposed an asset-response cloning bug: body/status were not preserved by the Worker. Fixed by forwarding the asset body and response init; added a regression test for HTML body, content type and 404 status. Rerun browser CI for verification.

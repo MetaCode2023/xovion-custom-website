@@ -9,3 +9,11 @@ test('production requires real HTTPS origin and working contact mode',()=>{const
 test('business copy is escaped before HTML output',()=>{assert.equal(escapeHTML('<script>"&'), '&lt;script&gt;&quot;&amp;');});
 test('starter cannot accept a real inquiry',async()=>{const r=await worker.fetch(new Request('https://example.com/api/quote',{method:'POST'}),{});assert.equal(r.status,405);});
 test('missing API returns JSON 404; preview is noindex',async()=>{const api=await worker.fetch(new Request('https://example.com/api/x'),{});assert.equal(api.status,404);const r=await worker.fetch(new Request('https://example.com/'),{ASSETS:{fetch:async()=>new Response('ok')},SITE_STAGE:'preview'});assert.equal(r.headers.get('X-Robots-Tag'),'noindex, nofollow');assert.ok(r.headers.get('Content-Security-Policy').includes("form-action 'none'"));});
+
+test('Worker preserves asset body, status and content type while adding headers',async()=>{
+ for(const status of [200,404]){
+ const html='<h1>Actual page</h1>';
+ const response=await worker.fetch(new Request('https://example.com/'),{SITE_STAGE:'preview',ASSETS:{fetch:async()=>new Response(html,{status,headers:{'Content-Type':'text/html'}})}});
+ assert.equal(response.status,status);assert.equal(await response.text(),html);assert.equal(response.headers.get('Content-Type'),'text/html');assert.equal(response.headers.get('X-Content-Type-Options'),'nosniff');
+ }
+});

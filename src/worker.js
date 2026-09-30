@@ -5,7 +5,8 @@ export default {
       return Response.json({error: 'No submissions are accepted by this starter.'}, {status:405, headers:{Allow:'GET, HEAD'}});
     }
     if (url.pathname.startsWith('/api/')) return Response.json({error:'No API configured'}, {status:404});
-    const response = new Response(await env.ASSETS.fetch(request));
+    const asset = await env.ASSETS.fetch(request);
+    const response = new Response(asset.body, asset);
     response.headers.set('X-Content-Type-Options', 'nosniff');
     response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
     const localReload = env.LOCAL_DEV === "true" && env.SITE_STAGE !== "production" && ["localhost", "127.0.0.1", "[::1]"].includes(url.hostname);
