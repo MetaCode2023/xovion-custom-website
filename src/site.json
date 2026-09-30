@@ -1,0 +1,17 @@
+{
+  "example": true,
+  "name": "Good Neighbor",
+  "tagline": "Home services, made simple.",
+  "location": "Your town, your neighborhood",
+  "headline": "More time for the place you call home.",
+  "description": "Thoughtful help with everyday home care. Tell us what you need, and let’s make a plan that fits.",
+  "email": "hello@example.com",
+  "siteUrl": "",
+  "contactMode": "demo",
+  "bookingUrl": "",
+  "services": [
+    {"name":"Everyday care","description":"A helping hand for the recurring tasks that keep your home feeling good."},
+    {"name":"A fresh start","description":"Focused help when a space needs extra attention and a little more time."},
+    {"name":"Your next chapter","description":"Support for moving, settling in and making a space your own."}
+  ]
+}

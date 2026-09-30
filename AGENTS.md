@@ -1,0 +1,15 @@
+# Codex instructions
+
+Build the requested website in this repository. Read README.md, BUSINESS-BRIEF.md and BUILD-STATUS.md if present. Continue existing work. Do not overwrite unrelated files.
+
+The default starter is Node build scripts, HTML/CSS/JavaScript and a Cloudflare Worker with Static Assets. Business content belongs in src/site.json; generated dist output is ignored. Preserve the lockfile and dependency versions unless a needed change is explained. Use current official documentation when configuring vendors.
+
+Finish the authorized implementation and checks. Do not stop at a plan. Make ordinary design choices without a long interview. Keep the first milestone a local working homepage. Record progress, evidence, blockers and next prompt in BUILD-STATUS.md. Missing account access does not block local work.
+
+Use verified business facts only. Omit unknown claims and fake testimonials. No client data or unlicensed assets. Escape business copy in HTML. Make all controls functional; demo submission must clearly say nothing was sent. Never claim a request was received or a job booked without durable/authoritative confirmation.
+
+Keep public pages responsive and keyboard accessible with visible labels/focus, reduced-motion support and readable text. Check navigation, dialog close/escape, demo errors/success, narrow screens and direct route refresh when routes are added. Run npm run verify and a Wrangler dry run before preparing deployment. Report any browser checks not actually performed.
+
+No secrets in Git, browser assets, prompts or logs. Production must reject fictional content and demo mode. Account creation, paid resources, public deployment and DNS require owner authorization unless explicitly authorized in the session. Respect existing email/DNS and document rollback. Never remove authorization requirements to force a launch.
+
+Use the existing booking/CRM system as operational authority by default. Custom backend collection requires server validation, abuse controls, durable receipt, authenticated owner access, retry/idempotency design, privacy/retention decisions and tests. D1, Queues, R2, voice and payments are optional, not prerequisites for a simple site.
