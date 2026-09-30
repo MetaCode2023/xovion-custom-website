@@ -14,7 +14,10 @@ A working website starter from [Xovion Labs](https://xovionlabs.com), packaged w
 
 ## What is included
 
-- Responsive homepage with services, process, FAQs and an interactive demo form.
+- Responsive homepage with optional services, process and FAQ sections, plus an interactive demo form.
+- Optional phone, hours, service areas, public address and directions link.
+- Four fictional business-brief examples and a first-time-user walkthrough.
+- Private-information checks for common credential files and secret patterns.
 - Guided setup with a business brief, content validation and local backups.
 - Automatic local rebuilding and browser reload when you edit source files.
 - Editable business content, navigation, button labels, process steps and FAQs in `src/site.json`.
@@ -79,3 +82,9 @@ npm run test:browser
 ```
 
 Browser checks start the actual local Wrangler Worker on port 8791 and cover navigation, FAQs, demo validation/reset, keyboard access, overflow and Worker responses. Live email/booking modes check configured links without contacting the provider. Chromium runs at desktop and phone viewport sizes; this is not Safari/iPhone hardware verification or a complete accessibility audit. GitHub Actions installs required Linux browser dependencies. On Linux, use `npx playwright install --with-deps chromium` if system libraries are missing. Keep `npm run verify` for the lightweight checks; browser checks run separately and are required in CI.
+
+## Tailor the starter
+
+Set `sections.services`, `sections.process` or `sections.faq` to `false` in `src/site.json` to omit those sections. Related navigation is removed automatically. The hero and contact section stay available. Add approved public details in `businessDetails`; blank values are omitted. See [content instructions](docs/EDITING-CONTENT.md).
+
+Use [example business briefs](examples/business-briefs/README.md) to see useful inputs for different businesses. Rehearse the complete setup with `npm run test:first-run`; use the [first-time-user walkthrough](docs/FIRST-TIME-USER-TEST.md) to record human usability feedback. Before publishing changes, stage the intended files and run `npm run check:private`. See [what this check covers](docs/PRIVATE-INFORMATION-CHECK.md).

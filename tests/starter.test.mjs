@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {validateSite,escapeHTML} from '../scripts/build.mjs';
 import worker from '../src/worker.js';
 import {readFile} from 'node:fs/promises';
-const sample=JSON.parse(await readFile(new URL('../src/site.json',import.meta.url)));
+const sample=JSON.parse(await readFile(new URL('./fixtures/site.json',import.meta.url)));
 test('example runs locally but cannot accidentally launch as production',()=>{assert.doesNotThrow(()=>validateSite(sample));assert.throws(()=>validateSite(sample,true));});
 test('production requires real HTTPS origin and working contact mode',()=>{const s={...sample,example:false,email:'owner@realbusiness.net',contactMode:'email',siteUrl:'https://realbusiness.net'};assert.doesNotThrow(()=>validateSite(s,true));assert.throws(()=>validateSite({...s,siteUrl:'http://localhost'},true));assert.throws(()=>validateSite({...s,contactMode:'booking',bookingUrl:'javascript:alert(1)'},true));});
 test('business copy is escaped before HTML output',()=>{assert.equal(escapeHTML('<script>"&'), '&lt;script&gt;&quot;&amp;');});

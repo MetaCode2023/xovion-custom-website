@@ -6,7 +6,7 @@ import {join} from 'node:path';
 import {makeSetup,runSetup} from '../scripts/setup.mjs';
 import {sourceFingerprint,startWatch} from '../scripts/dev.mjs';
 import worker from '../src/worker.js';
-const sample=JSON.parse(await readFile(new URL('../src/site.json',import.meta.url)));
+const sample=JSON.parse(await readFile(new URL('./fixtures/site.json',import.meta.url)));
 const answers={name:'Test Business',location:'Sioux Falls',tagline:'Careful work',headline:'Welcome',description:'Local services',services:'Cleaning, Maintenance',style:'Simple',contactMode:'demo',email:'hello@example.com',bookingUrl:''};
 test('setup preserves known services and validates before save',()=>{
  const known=sample.services[0];const result=makeSetup(sample,{...answers,services:known.name+', New service'});

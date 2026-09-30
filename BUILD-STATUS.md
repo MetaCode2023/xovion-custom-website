@@ -15,3 +15,7 @@ Added npm run doctor and validated, escaped homepage copy fields. New-business s
 Added seven reusable UI/UX request prompts and a Chromium browser suite for desktop/phone viewports using the actual Wrangler preview Worker. GitHub Actions installs browsers and runs the suite. Local Wrangler startup remains blocked by network-interface lookup; rely on the recorded CI result for automated browser evidence, and retain owner visual review and Safari checks before launch.
 
 First browser CI exposed an asset-response cloning bug: body/status were not preserved by the Worker. Fixed by forwarding the asset body and response init; added a regression test for HTML body, content type and 404 status. Rerun browser CI for verification.
+
+Added section toggles, optional public business details, four fictional business-brief examples, private-information scanning and a first-time-user acceptance worksheet/automated clean-copy rehearsal. Unit tests now use a stable fictional fixture rather than owner-edited configuration. Git scanning checks staged versions to avoid missing a secret cleaned only in the working tree. Human first-time-user review remains unperformed.
+
+Verification: clean-copy rehearsal passed installation, setup, customized output, unit checks and Cloudflare dry run. Current suite contains 21 unit tests. The rehearsal exposed configuration-dependent test assumptions; stable fixtures fixed them. Browser CI checks run separately on the actual Worker.

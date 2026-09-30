@@ -6,7 +6,7 @@ import {join} from 'node:path';
 import {renderSite,validateSite} from '../scripts/build.mjs';
 import {diagnose} from '../scripts/doctor.mjs';
 import {makeSetup} from '../scripts/setup.mjs';
-const sample=JSON.parse(await readFile(new URL('../src/site.json',import.meta.url)));
+const sample=JSON.parse(await readFile(new URL('./fixtures/site.json',import.meta.url)));
 const template=await readFile(new URL('../src/index.html',import.meta.url),'utf8');
 test('all configurable homepage copy renders safely with no template tokens',()=>{
  const s=structuredClone(sample);
