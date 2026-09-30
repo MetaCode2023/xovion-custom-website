@@ -1,6 +1,6 @@
 import {test,expect} from '@playwright/test';
 import {readFile} from 'node:fs/promises';
-async function fill(page){await page.locator('[name=name]').fill('Sample Workshop');await page.locator('[name=location]').fill('Example town');await page.locator('[name=description]').fill('We discuss repair requests.');await page.locator('[name=services]').fill('Repair consultation');}
+async function fill(page){await page.locator('[name=name]').fill('Sample Workshop');await page.locator('[name=location]').fill('Example town');await page.locator('#business-form [name=description]').fill('We discuss repair requests.');await page.locator('[name=services]').fill('Repair consultation');}
 test('onboarding generates downloadable kit without submitting business details',async({page,context})=>{
  await context.grantPermissions(['clipboard-read','clipboard-write']);
  const writes=[];page.on('request',request=>{if(!['GET','HEAD'].includes(request.method()))writes.push(request.url());});
